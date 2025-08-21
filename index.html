@@ -10,23 +10,37 @@
       background: #f4f4f4;
       color: #333;
       line-height: 1.6;
-      padding: 20px;
+      padding: 0;
+      margin: 0;
     }
     header {
       background: #004d40;
       color: white;
       padding: 20px;
       text-align: center;
-      border-radius: 10px;
     }
-    h1, h2, h3 {
+    nav {
+      background: #00796b;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+     h2, h3 {
       color: #00695c;
     }
     .content {
       background: white;
       padding: 20px;
       border-radius: 10px;
-      margin-top: 20px;
+      margin: 20px;
     }
     ul {
       margin-left: 20px;
@@ -54,11 +68,12 @@
     }
     /* Barra de pesquisa */
     .search-box {
-      margin-top: 15px;
+      margin: 15px 0;
+      text-align: center;
     }
     .search-box input {
       padding: 10px;
-      width: 70%;
+      width: 60%;
       border-radius: 5px;
       border: none;
     }
@@ -78,11 +93,11 @@
       background: white;
       padding: 20px;
       border-radius: 10px;
-      margin-top: 20px;
+      margin: 20px;
     }
     .comments textarea {
       width: 100%;
-      height: 100px;
+      height: 80px;
       padding: 10px;
       border-radius: 5px;
       border: 1px solid #ccc;
@@ -99,6 +114,32 @@
     .comments button:hover {
       background: #004d40;
     }
+    .comment-list {
+      margin-top: 15px;
+    }
+    .comment-item {
+      background: #e0f2f1;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    /* Botão voltar ao topo */
+    #backToTop {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #00796b;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+    }
+    #backToTop:hover {
+      background: #004d40;
+    }
   </style>
 </head>
 <body>
@@ -106,18 +147,29 @@
   <header>
     <h1>Reaproveitamento de Lixo Eletrônico</h1>
     <p>Transformando resíduos em soluções criativas</p>
-    
-    <!-- Barra de pesquisa -->
-    <div class="search-box">
-      <input type="text" placeholder="Pesquise algo aqui...">
-      <button>Pesquisar</button>
-    </div>
   </header>
 
-  <div class="content">
+  <!-- Menu -->
+  <nav>
+    <a href="#oque">O Que é</a>
+    <a href="#importancia">Importância</a>
+    <a href="#materiais">Materiais</a>
+    <a href="#cuidados">Cuidados</a>
+    <a href="#conclusao">Conclusão</a>
+  </nav>
+
+  <!-- Barra de pesquisa -->
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Pesquise no conteúdo...">
+    <button onclick="pesquisar()">Pesquisar</button>
+  </div>
+
+  <div class="content" id="oque">
     <h2>O Que é Reaproveitamento?</h2>
     <p>Reaproveitar é dar uma nova utilidade a materiais que seriam descartados, como celulares velhos ou cabos antigos. Mais do que reciclar, é enxergar valor no que seria lixo e transformar em algo útil.</p>
+  </div>
 
+  <div class="content" id="importancia">
     <h2>Por Que Isso é Importante?</h2>
     <ul>
       <li>Reduz a poluição ambiental</li>
@@ -125,7 +177,9 @@
       <li>Preserva recursos naturais</li>
       <li>Incentiva a inovação e criatividade</li>
     </ul>
+  </div>
 
+  <div class="content" id="materiais">
     <h2>Materiais que NÃO Devem Ser Reutilizados</h2>
     <div class="highlight">
       <ul>
@@ -146,7 +200,9 @@
       <li>Cabos em bom estado</li>
       <li>Fontes de energia para robótica</li>
     </ul>
+  </div>
 
+  <div class="content" id="cuidados">
     <h2>Cuidados e Segurança</h2>
     <ul>
       <li>Use luvas e óculos de proteção</li>
@@ -154,10 +210,15 @@
       <li>Separe e descarte componentes tóxicos corretamente</li>
       <li>Use ferramentas adequadas</li>
     </ul>
+  </div>
 
-    <h2>Passo a Passo Criativo</h2>
-    <p>Use teclas de teclados para montar quadros, transforme caixas de som em organizadores, capinhas em chaveiros e fios em luminárias! O importante é reutilizar com segurança e criatividade.</p>
+  <div class="content">
+    <h2>Curiosidade</h2>
+    <p>O Brasil gera mais de <strong>2 milhões de toneladas</strong> de lixo eletrônico por ano, sendo o maior produtor da América Latina.</p>
+    
+</div>
 
+  <div class="content" id="conclusao">
     <h2>Conclusão</h2>
     <p>Reaproveitar materiais eletrônicos ajuda o meio ambiente e incentiva soluções sustentáveis. Com atitudes simples, fazemos a diferença no presente e no futuro do planeta.</p>
   </div>
@@ -165,9 +226,10 @@
   <!-- Área de comentários -->
   <div class="comments">
     <h2>Deixe seu comentário</h2>
-    <textarea placeholder="Escreva aqui sua opinião..."></textarea>
+    <textarea id="commentInput" placeholder="Escreva aqui sua opinião..."></textarea>
     <br>
-    <button>Enviar</button>
+    <button onclick="adicionarComentario()">Enviar</button>
+    <div class="comment-list" id="commentList"></div>
   </div>
 
   <h6>
@@ -179,5 +241,48 @@
     Instituto Federal da Bahia</p>
   </footer>
 
+  <!-- Botão voltar ao topo -->
+  <button id="backToTop" onclick="voltarTopo()">↑</button>
+
+  <script>
+    // Função de pesquisa
+    function pesquisar() {
+      let input = document.getElementById("searchInput").value.toLowerCase();
+      let conteudos = document.querySelectorAll(".content");
+      conteudos.forEach(c => {
+        if (c.innerText.toLowerCase().includes(input)) {
+          c.style.display = "block";
+        } else {
+          c.style.display = "none";
+        }
+      });
+    }
+
+    // Função para comentários
+    function adicionarComentario() {
+      let input = document.getElementById("commentInput");
+      let lista = document.getElementById("commentList");
+      if (input.value.trim() !== "") {
+        let novoComentario = document.createElement("div");
+        novoComentario.classList.add("comment-item");
+        novoComentario.innerText = input.value;
+        lista.appendChild(novoComentario);
+        input.value = "";
+      }
+    }
+
+    // Botão voltar ao topo
+    window.onscroll = function() {
+      let botao = document.getElementById("backToTop");
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        botao.style.display = "block";
+      } else {
+        botao.style.display = "none";
+      }
+    }
+    function voltarTopo() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  </script>
 </body>
 </html>
