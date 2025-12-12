@@ -1,304 +1,630 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reaproveitamento Eletrônico</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
-      color: #333;
-      line-height: 1.6;
-      padding: 0;
-      margin: 0;
-    }
-    header {
-      background: #004d40;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-    nav {
-      background: #00796b;
-      padding: 10px;
-      text-align: center;
-    }
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-     h2, h3 {
-      color: #00695c;
-    }
-    .content {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      margin: 20px;
-    }
-    ul {
-      margin-left: 20px;
-    }
-    .highlight {
-      background: #e0f2f1;
-      padding: 10px;
-      border-left: 5px solid #004d40;
-      margin-bottom: 20px;
-    }
-    h6 {
-      background: #004d40;
-      color: white;
-      padding: 20px;
-      text-align: center;
-      border-radius: 10px;
-    }
-    footer {
-      background: #004d40;
-      color: white;
-      padding: 10px;
-      text-align: center;
-      border-radius: 3px;
-      margin-top: 20px;
-    }
-    .search-box {
-      margin: 15px 0;
-      text-align: center;
-    }
-    .search-box input {
-      padding: 10px;
-      width: 60%;
-      border-radius: 5px;
-      border: none;
-    }
-    .search-box button {
-      padding: 10px 15px;
-      border: none;
-      border-radius: 5px;
-      background: #00796b;
-      color: white;
-      cursor: pointer;
-    }
-    .search-box button:hover {
-      background: #004d40;
-    }
-    .comments {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      margin: 20px;
-    }
-    .comments textarea {
-      width: 100%;
-      height: 80px;
-      padding: 10px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-    .comments button {
-      margin-top: 10px;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 5px;
-      background: #00796b;
-      color: white;
-      cursor: pointer;
-    }
-    .comments button:hover {
-      background: #004d40;
-    }
-    .comment-list {
-      margin-top: 15px;
-    }
-    .comment-item {
-      background: #e0f2f1;
-      padding: 10px;
-      border-radius: 5px;
-      margin-bottom: 10px;
-    }
-    #backToTop {
-      display: none;
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #00796b;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 18px;
-    }
-    #backToTop:hover {
-      background: #004d40;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💪 Meu Diário de Treino Profissional</title>
+    <style>
+        /* --- ESTILOS CSS PROFISSIONAIS --- */
+        :root {
+            --primary-color: #4CAF50; /* Verde Fitness */
+            --secondary-color: #2196F3; /* Azul para Ação */
+            --text-color: #333;
+            --bg-light: #f9f9f9;
+            --border-color: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-light);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 2.2em;
+        }
+
+        h2, h3 {
+            color: var(--secondary-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+            margin-top: 30px;
+        }
+
+        /* --- Formulários e Botões --- */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        input[type="text"], input[type="number"], select {
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            width: 100%;
+            box-sizing: border-box;
+            margin-top: 5px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, select:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        .btn {
+            padding: 12px 20px;
+            border-radius: 6px;
+            border: none;
+            width: 100%;
+            box-sizing: border-box;
+            margin-top: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.1s;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #43a047; /* Tom mais escuro */
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background-color: #ffc107; /* Amarelo */
+            color: #333;
+        }
+        .btn-secondary:hover {
+            background-color: #e0a800;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+            width: auto;
+            display: block;
+            margin-top: 30px;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+
+        /* --- Checkboxes de Filtro --- */
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 10px 0;
+        }
+        .checkbox-group label {
+            background-color: var(--bg-light);
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .checkbox-group input[type="checkbox"] {
+            display: none; /* Esconde o checkbox padrão */
+        }
+        .checkbox-group input[type="checkbox"]:checked + label {
+            background-color: var(--secondary-color);
+            color: white;
+            border-color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        /* --- Tabela de Treino --- */
+        #tabelaTreino {
+            margin-top: 20px;
+            border-radius: 8px;
+            overflow: hidden; 
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            text-align: left;
+            vertical-align: middle;
+        }
+        
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f7f7f7;
+        }
+
+        /* Coluna de Registro */
+        .registro-container {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .registro-serie {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9em;
+        }
+        .registro-input {
+            width: 70px !important; 
+            padding: 5px;
+            text-align: center;
+            height: auto;
+            margin-top: 0;
+        }
+
+        /* Progresso */
+        .progresso-texto {
+            font-weight: bold;
+            color: #198754; 
+            font-size: 1.1em;
+        }
+        .novo-ex {
+            color: #ffc107; 
+        }
+
+        /* Mensagens */
+        #mensagemErro {
+            color: #dc3545;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        #mensagemSalvamento {
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #e6ffe6;
+            border-radius: 4px;
+        }
+
+        /* Estilo para Adicionar Exercício */
+        #add-exercise-form {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none; /* Esconde por padrão */
+        }
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        .form-row > div {
+            flex: 1;
+        }
+    </style>
 </head>
 <body>
 
-  <header>
-    <h1>Retech</h1>
-    <p>Reaproveitamento de Lixo Eletrônico</p>
-  </header>
+    <div class="container">
+        <h1>🏋️ Diário de Treino Online</h1>
 
-  <!-- Menu -->
-  <nav>
-    <a href="#oque">O Que é</a>
-    <a href="#importancia">Importância</a>
-    <a href="#materiais">Materiais</a>
-    <a href="#cuidados">Cuidados</a>
-    <a href="#conclusao">Conclusão</a>
-  </nav>
+        <div id="login-screen">
+            <h2>🔑 Acessar Treino</h2>
+            <div class="form-group">
+                <label for="codigoInput">Insira seu Código de Treino:</label>
+                <input type="text" id="codigoInput" placeholder="Ex: TREINOA (Rykelmy) ou TREINOB (Luísa)">
+            </div>
+            <button class="btn btn-primary" onclick="acessarTreino()">Entrar</button>
+            <p id="mensagemErro"></p>
+        </div>
 
-  <!-- Barra de pesquisa -->
-  <div class="search-box">
-    <input type="text" id="searchInput" placeholder="Pesquise no conteúdo...">
-    <button onclick="pesquisar()">Pesquisar</button>
-  </div>
+        <div id="app-screen">
+            <h2 id="tituloTreino"></h2>
 
-  <div class="content" id="oque">
-    <h2>O Que é Reaproveitamento?</h2>
-    <p>Reaproveitar é dar uma nova utilidade a materiais que seriam descartados, como celulares velhos ou cabos antigos. Mais do que reciclar, é enxergar valor no que seria lixo e transformar em algo útil.</p>
-    <p>Enquanto a reciclagem transforma materiais em matéria-prima, o reaproveitamento busca novas funções sem necessidade de processos industriais complexos. Isso pode incluir desde o uso de peças em projetos de robótica até a criação de itens de decoração com partes de computadores antigos.</p>
-    <p>Exemplo: teclados antigos viram quadros criativos, motores de impressoras podem ser usados em projetos escolares de robótica e placas-mãe podem ser transformadas em obras de arte ou chaveiros criativos.</p>
-  </div>
+            <h3>Selecione os Grupos Musculares de Hoje</h3>
+            <div id="grupoMuscularCheckboxes" class="checkbox-group">
+                </div>
+            <button class="btn btn-primary" onclick="filtrarExercicios()">✅ Aplicar Filtro</button>
+            
+            <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 25px 0;">
 
-  <div class="content" id="importancia">
-    <h2>Por Que Isso é Importante?</h2>
-    <ul>
-      <li>Reduz a poluição ambiental</li>
-      <li>Evita descarte de metais tóxicos</li>
-      <li>Preserva recursos naturais</li>
-      <li>Incentiva a inovação e criatividade</li>
-    </ul>
-    <p>Segundo a ONU, o mundo gera mais de <strong>53 milhões de toneladas</strong> de lixo eletrônico por ano, e menos de 20% é reciclado corretamente. No Brasil, são mais de 2 milhões de toneladas anuais, mas apenas uma pequena parte tem destinação adequada.</p>
-    <p>O descarte incorreto pode liberar substâncias como chumbo, mercúrio e cádmio no solo e na água, contaminando o meio ambiente por décadas. Por outro lado, o reaproveitamento pode recuperar metais valiosos, como ouro, cobre e prata, presentes em celulares, computadores e televisores.</p>
-  </div>
+            <button class="btn btn-secondary" onclick="toggleAddExerciseForm()">➕ Adicionar Novo Exercício</button>
 
-  <div class="content" id="materiais">
-    <h2>Materiais que NÃO Devem Ser Reutilizados</h2>
-    <div class="highlight">
-      <ul>
-        <li>Baterias de lítio ou chumbo – risco de explosão e contaminação</li>
-        <li>Placas de circuito impresso – contêm metais pesados e tóxicos</li>
-        <li>Lâmpadas fluorescentes/LEDs – podem liberar mercúrio</li>
-        <li>Fios sem isolamento – risco de curto-circuito</li>
-        <li>Telas LCD/LED – difíceis de desmontar com segurança</li>
-        <li>HDs e SSDs com dados – risco de vazamento de informações</li>
-      </ul>
+            <div id="add-exercise-form">
+                <h4>Adicionar ao Plano de Treino</h4>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="newExName">Nome do Exercício:</label>
+                        <input type="text" id="newExName" placeholder="Ex: Agachamento Búlgaro">
+                    </div>
+                    <div class="form-group">
+                        <label for="newExGroup">Grupo Muscular:</label>
+                        <input type="text" id="newExGroup" placeholder="Ex: Pernas">
+                    </div>
+                    <div class="form-group">
+                        <label for="newExSeries">Séries Padrão:</label>
+                        <input type="text" id="newExSeries" placeholder="Ex: 3x12 ou 4x8-10">
+                    </div>
+                </div>
+                <button class="btn btn-primary" onclick="adicionarExercicioCustomizado()">Salvar Novo Exercício</button>
+                <p id="mensagemAdicao" style="margin-top: 10px;"></p>
+            </div>
+
+
+            <h3 id="subTituloExercicios"></h3>
+            
+            <table id="tabelaTreino">
+                <thead>
+                    <tr>
+                        <th>Exercício</th>
+                        <th style="width: 15%;">Séries Padrão</th>
+                        <th style="width: 15%;">Progresso (Carga Máx.)</th>
+                        <th>Registro de Séries (Repetições x Carga em kg)</th>
+                    </tr>
+                </thead>
+                <tbody id="listaExercicios">
+                    <tr><td colspan="4" style="text-align: center;">Utilize o filtro acima para ver os exercícios.</td></tr>
+                </tbody>
+            </table>
+
+            <div style="margin-top: 25px; display: flex; justify-content: space-between; align-items: center;">
+                <button class="btn btn-primary" style="width: 60%;" onclick="salvarTreino()">💾 Salvar Treino de Hoje</button>
+                <button class="btn btn-danger" style="width: 35%; margin-top: 0;" onclick="logout()">Sair / Mudar Código</button>
+            </div>
+            
+            <p id="mensagemSalvamento"></p>
+        </div>
     </div>
 
-    <h2>Materiais que PODEM Ser Reutilizados</h2>
-    <ul>
-      <li>Teclados para decoração ou artesanato</li>
-      <li>Caixas de som como organizadores</li>
-      <li>Capinhas como chaveiros ou enfeites</li>
-      <li>Cabos em bom estado para novos usos</li>
-      <li>Fontes de energia em projetos de eletrônica ou robótica</li>
-    </ul>
-    <p>Esses materiais podem ser aproveitados sem riscos graves à saúde, desde que avaliados corretamente. Além disso, projetos escolares e makerspaces utilizam bastante sucata eletrônica para criar novos dispositivos e até protótipos tecnológicos.</p>
-  </div>
+    <script>
+        // CHAVE PARA SALVAR O PLANO BASE PERSONALIZADO NO LOCAL STORAGE
+        const LOCAL_PLAN_KEY_PREFIX = "base_plan_";
 
-  <div class="content" id="cuidados">
-    <h2>Cuidados e Segurança</h2>
-    <ul>
-      <li>Use luvas e óculos de proteção para evitar acidentes</li>
-      <li>Evite ambientes fechados ao manusear eletrônicos antigos</li>
-      <li>Separe e descarte componentes tóxicos em pontos de coleta adequados</li>
-      <li>Use ferramentas corretas para desmontagem, evitando improvisos</li>
-    </ul>
-    <p>É importante nunca queimar componentes eletrônicos, pois isso libera gases tóxicos. Pilhas e baterias devem ser levadas a ecopontos. Além disso, sempre desligue e descarregue equipamentos antes de desmontar para evitar choques elétricos.</p>
-  </div>
+        // --- DADOS MOCKADOS (Planos Base Iniciais) ---
+        const TREINOS_PRONTOS_INICIAIS = [
+            {
+                codigo: "TREINOA",
+                aluno: "Rykelmy", 
+                nome: "Plano Completo Atualizado",
+                exercicios: [
+                    // Treino de Costas
+                    { nome: "Puxada na frente", grupo: "Costas", series_padrao: "4x10-12" },
+                    { nome: "Remada baixa", grupo: "Costas", series_padrao: "4x10-12" },
+                    { nome: "Remada curvada", grupo: "Costas", series_padrao: "3x8-10" },
+                    { nome: "Pullover na corda", grupo: "Costas", series_padrao: "3x12-15" },
+                    // Treino de Bíceps
+                    { nome: "Rosca direta", grupo: "Bíceps", series_padrao: "4x10-12" },
+                    { nome: "Rosca alternada", grupo: "Bíceps", series_padrao: "3x10-12" },
+                    { nome: "Rosca martelo", grupo: "Bíceps", series_padrao: "3x10-12" },
+                    // Treino de Peito
+                    { nome: "Supino reto", grupo: "Peito", series_padrao: "4x8-12" },
+                    { nome: "Supino inclinado", grupo: "Peito", series_padrao: "3x10-12" },
+                    { nome: "Crucifixo", grupo: "Peito", series_padrao: "3x12-15" },
+                    { nome: "Voador", grupo: "Peito", series_padrao: "3x12-15" },
+                    // Treino de Perna
+                    { nome: "Agachamento livre", grupo: "Pernas", series_padrao: "4x8-12" },
+                    { nome: "Leg press", grupo: "Pernas", series_padrao: "4x10-15" },
+                    { nome: "Extensora", grupo: "Pernas", series_padrao: "3x12-15" },
+                    { nome: "Flexora", grupo: "Pernas", series_padrao: "3x12-15" },
+                    { nome: "Panturrilha", grupo: "Pernas", series_padrao: "4x15-20" }
+                ]
+            },
+            {
+                codigo: "TREINOB",
+                aluno: "Luísa", 
+                nome: "Foco: Pernas e Ombro",
+                exercicios: [
+                    { nome: "Agachamento Livre", grupo: "Pernas", series_padrao: "4x8" },
+                    { nome: "Leg Press", grupo: "Pernas", series_padrao: "3x12" },
+                    { nome: "Elevação Lateral", grupo: "Ombro", series_padrao: "3x15" },
+                    { nome: "Cadeira Extensora", grupo: "Pernas", series_padrao: "3x15" }
+                ]
+            }
+        ];
 
-  <div class="content">
-    <h2>Curiosidade</h2>
-    <p>O Brasil gera mais de <strong>2 milhões de toneladas</strong> de lixo eletrônico por ano, sendo o maior produtor da América Latina.</p>
-    <p>A Suíça foi o primeiro país a criar leis específicas para a reciclagem de lixo eletrônico em 1998. Atualmente, a União Europeia possui regras rígidas que obrigam fabricantes a recolher e tratar resíduos eletrônicos.</p>
-    <p>Em alguns países já existem fábricas automatizadas que desmontam celulares e computadores, separando metais e plásticos de forma eficiente. Esses materiais podem ser vendidos e reinseridos no mercado, reduzindo a necessidade de mineração.</p>
-  </div>
+        let treinoAtual = null;
 
-  <div class="content" id="conclusao">
-    <h2>Conclusão</h2>
-    <p>Reaproveitar materiais eletrônicos ajuda o meio ambiente e incentiva soluções sustentáveis. Com atitudes simples, fazemos a diferença no presente e no futuro do planeta.</p>
-    <p>Além de preservar recursos naturais, também reduzimos os riscos de contaminação do solo e da água. Ações como doar aparelhos antigos, levar pilhas e baterias a pontos de coleta e incentivar projetos escolares de reaproveitamento eletrônico são formas práticas de contribuir.</p>
-    <p>O lixo eletrônico é um problema coletivo, mas cada pessoa pode agir para minimizar seus impactos.</p>
-  </div>
+        // --- FUNÇÕES DE CONTROLE DE TELA ---
 
-  <!-- Seção de Vídeos -->
-  <div class="content" id="videos">
-    <h2>Vídeos sobre Reciclagem Eletrônica</h2>
-    <p>Confira alguns vídeos que mostram como o reaproveitamento eletrônico pode transformar o mundo:</p>
-    <div style="text-align:center;">
-      <iframe width="560" height="315" 
-        src="https://www.youtube.com/embed/4xpALl7Hhf8" 
-        title="YouTube video player" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen>
-      </iframe>
-    </div>
-  </div>
-
-  <!-- Área de comentários -->
-  <div class="comments">
-    <h2>Deixe seu comentário</h2>
-    <textarea id="commentInput" placeholder="Escreva aqui sua opinião..."></textarea>
-    <br>
-    <button onclick="adicionarComentario()">Enviar</button>
-    <div class="comment-list" id="commentList"></div>
-  </div>
-
-  <h6>
-    <p>#Retech - Compartilhe sua criação nas redes sociais!</p>
-  </h6>
-
-  <footer>
-    <p>IFBA - Instituto Federal de Educação, Ciência e Tecnologia da Bahia<br>
-    Instituto Federal da Bahia</p>
-  </footer>
-
-  <!-- Botão voltar ao topo -->
-  <button id="backToTop" onclick="voltarTopo()">↑</button>
-
-  <script>
-    function pesquisar() {
-      let input = document.getElementById("searchInput").value.toLowerCase();
-      let conteudos = document.querySelectorAll(".content");
-      conteudos.forEach(c => {
-        if (c.innerText.toLowerCase().includes(input)) {
-          c.style.display = "block";
-        } else {
-          c.style.display = "none";
+        function init() {
+            const codigoSalvo = sessionStorage.getItem('codigoTreino');
+            if (codigoSalvo) {
+                document.getElementById('codigoInput').value = codigoSalvo;
+                acessarTreino(codigoSalvo);
+            } else {
+                document.getElementById('app-screen').style.display = 'none';
+                document.getElementById('subTituloExercicios').textContent = '';
+            }
         }
-      });
-    }
-    function adicionarComentario() {
-      let input = document.getElementById("commentInput");
-      let lista = document.getElementById("commentList");
-      if (input.value.trim() !== "") {
-        let novoComentario = document.createElement("div");
-        novoComentario.classList.add("comment-item");
-        novoComentario.innerText = input.value;
-        lista.appendChild(novoComentario);
-        input.value = "";
-      }
-    }
-    window.onscroll = function() {
-      let botao = document.getElementById("backToTop");
-      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-        botao.style.display = "block";
-      } else {
-        botao.style.display = "none";
-      }
-    }
-    function voltarTopo() {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-  </script>
+
+        function acessarTreino(codigoPreenchido) {
+            const codigo = codigoPreenchido || document.getElementById('codigoInput').value.toUpperCase().trim();
+            
+            // 1. Tenta carregar o plano personalizado do localStorage
+            const localPlanKey = LOCAL_PLAN_KEY_PREFIX + codigo;
+            const planoPersonalizado = localStorage.getItem(localPlanKey);
+
+            let treinoEncontrado;
+
+            if (planoPersonalizado) {
+                // Se o plano personalizado existe, usa ele
+                treinoEncontrado = JSON.parse(planoPersonalizado);
+            } else {
+                // Caso contrário, usa o plano inicial (hardcoded)
+                treinoEncontrado = TREINOS_PRONTOS_INICIAIS.find(t => t.codigo === codigo);
+            }
+
+
+            if (treinoEncontrado) {
+                treinoAtual = treinoEncontrado;
+                sessionStorage.setItem('codigoTreino', codigo); 
+                
+                document.getElementById('mensagemErro').textContent = '';
+                document.getElementById('login-screen').style.display = 'none';
+                document.getElementById('app-screen').style.display = 'block';
+                
+                // SAUDAÇÃO PERSONALIZADA
+                document.getElementById('tituloTreino').textContent = `Olá, ${treinoAtual.aluno}! 👋 Seu Plano: ${treinoAtual.nome} (${treinoAtual.codigo})`;
+                
+                carregarFiltros();
+                
+            } else {
+                document.getElementById('mensagemErro').textContent = '❌ Código de treino inválido. Tente TREINOA ou TREINOB.';
+                treinoAtual = null;
+            }
+        }
+
+        function logout() {
+            sessionStorage.removeItem('codigoTreino');
+            treinoAtual = null;
+            document.getElementById('app-screen').style.display = 'none';
+            document.getElementById('login-screen').style.display = 'block';
+            document.getElementById('codigoInput').value = '';
+            document.getElementById('listaExercicios').innerHTML = ''; 
+            document.getElementById('mensagemSalvamento').textContent = '';
+            document.getElementById('subTituloExercicios').textContent = '';
+        }
+
+        // --- FUNÇÕES DE ADIÇÃO DE EXERCÍCIO ---
+
+        function toggleAddExerciseForm() {
+            const form = document.getElementById('add-exercise-form');
+            form.style.display = form.style.display === 'block' ? 'none' : 'block';
+            document.getElementById('mensagemAdicao').textContent = '';
+        }
+
+        function adicionarExercicioCustomizado() {
+            const nome = document.getElementById('newExName').value.trim();
+            const grupo = document.getElementById('newExGroup').value.trim();
+            const series = document.getElementById('newExSeries').value.trim();
+            const msg = document.getElementById('mensagemAdicao');
+
+            if (!nome || !grupo || !series) {
+                msg.innerHTML = '<span style="color: red;">⚠️ Por favor, preencha todos os campos.</span>';
+                return;
+            }
+
+            const novoExercicio = {
+                nome: nome,
+                grupo: grupo,
+                series_padrao: series
+            };
+
+            // Adiciona ao plano atual na memória
+            treinoAtual.exercicios.push(novoExercicio);
+
+            // 2. Salva o plano atualizado no LocalStorage para persistir
+            const localPlanKey = LOCAL_PLAN_KEY_PREFIX + treinoAtual.codigo;
+            localStorage.setItem(localPlanKey, JSON.stringify(treinoAtual));
+
+            // 3. Limpa os campos e atualiza a UI
+            document.getElementById('newExName').value = '';
+            document.getElementById('newExGroup').value = '';
+            document.getElementById('newExSeries').value = '';
+
+            msg.innerHTML = '<span style="color: green; font-weight: bold;">✅ Exercício adicionado e salvo no plano! Re-filtre para ver na lista.</span>';
+            
+            // Recarrega filtros para incluir o novo grupo, se for o caso
+            carregarFiltros();
+            
+            // Re-renderiza a lista se já houver filtros aplicados (ou faz o usuário clicar em filtrar de novo)
+            // Se o usuário já filtrou, vamos aplicar o filtro novamente.
+            const checkboxes = document.querySelectorAll('#grupoMuscularCheckboxes input:checked');
+            if (checkboxes.length > 0) {
+                filtrarExercicios();
+            }
+        }
+
+        // --- FUNÇÕES DE FILTRAGEM E VISUALIZAÇÃO ---
+
+        function carregarFiltros() {
+            const container = document.getElementById('grupoMuscularCheckboxes');
+            container.innerHTML = '';
+            
+            // Pega todos os grupos únicos do treino atual (incluindo customizados)
+            const grupos = [...new Set(treinoAtual.exercicios.map(ex => ex.grupo))].sort(); 
+            
+            grupos.forEach(grupo => {
+                const id = `check-${grupo.replace(/\s/g, '')}`; 
+                container.innerHTML += `
+                    <input type="checkbox" id="${id}" value="${grupo}">
+                    <label for="${id}">${grupo}</label>
+                `;
+            });
+            document.getElementById('subTituloExercicios').textContent = 'Selecione os grupos e clique em Aplicar Filtro.';
+        }
+
+        function filtrarExercicios() {
+            const checkboxes = document.querySelectorAll('#grupoMuscularCheckboxes input:checked');
+            const gruposSelecionados = Array.from(checkboxes).map(cb => cb.value);
+
+            const exerciciosFiltrados = treinoAtual.exercicios.filter(ex => 
+                gruposSelecionados.includes(ex.grupo)
+            );
+            
+            if (exerciciosFiltrados.length === 0 && gruposSelecionados.length > 0) {
+                 document.getElementById('subTituloExercicios').textContent = 'Nenhum exercício encontrado para os grupos selecionados.';
+            } else if (gruposSelecionados.length === 0) {
+                 document.getElementById('subTituloExercicios').textContent = 'Selecione pelo menos um grupo muscular.';
+            } else {
+                document.getElementById('subTituloExercicios').textContent = `Lista de Exercícios: ${gruposSelecionados.join(', ')}`;
+            }
+
+            renderizarExercicios(exerciciosFiltrados);
+        }
+
+        function getHistorico() {
+            const chave = `historico_${treinoAtual.codigo}`;
+            const historicoJSON = localStorage.getItem(chave);
+            return historicoJSON ? JSON.parse(historicoJSON) : [];
+        }
+
+        function getProgressoExercicio(nomeExercicio, historico) {
+            let cargaMaxima = 0;
+            let ultimaCarga = '';
+
+            for (const treino of historico) {
+                const ex = treino.exercicios.find(e => e.nome === nomeExercicio);
+                if (ex && ex.registro.length > 0) {
+                    const maxCargaTreino = Math.max(...ex.registro.map(s => s.carga));
+                    
+                    cargaMaxima = Math.max(cargaMaxima, maxCargaTreino);
+
+                    ultimaCarga = ex.registro[ex.registro.length - 1].carga;
+                }
+            }
+
+            return {
+                texto: cargaMaxima > 0 ? `${cargaMaxima} kg` : 'Novo',
+                ultimaCarga: ultimaCarga
+            };
+        }
+
+        function renderizarExercicios(exercicios) {
+            const lista = document.getElementById('listaExercicios');
+            lista.innerHTML = '';
+            const historico = getHistorico();
+            
+            if (exercicios.length === 0) {
+                lista.innerHTML = '<tr><td colspan="4" style="text-align: center;">Selecione um grupo muscular acima e clique em "Aplicar Filtro".</td></tr>';
+                return;
+            }
+
+            exercicios.forEach((ex, index) => {
+                const progresso = getProgressoExercicio(ex.nome, historico);
+                
+                const numSeriesMatch = ex.series_padrao.match(/^(\d+)/);
+                const numSeries = numSeriesMatch ? parseInt(numSeriesMatch[1]) : 3;
+
+                let seriesInputs = '';
+                for(let i = 1; i <= numSeries; i++) {
+                    // Tenta extrair a repetição padrão (pode ser um intervalo como 10-12)
+                    const repsPattern = ex.series_padrao.split('x')[1];
+                    const repsPadrao = repsPattern ? repsPattern.split('-')[0].trim() : 12;
+
+                    seriesInputs += `
+                        <div class="registro-serie">
+                            Série ${i}: 
+                            <input type="number" placeholder="${repsPadrao}" class="registro-input" data-ex-index="${index}" data-serie="${i}" data-tipo="reps" value="${repsPadrao}">
+                            x
+                            <input type="number" placeholder="Carga" class="registro-input" data-ex-index="${index}" data-serie="${i}" data-tipo="carga" value="${progresso.ultimaCarga || ''}"> kg
+                        </div>
+                    `;
+                }
+                
+                const progressoClass = progresso.texto === 'Novo' ? 'novo-ex' : 'progresso-texto';
+
+                lista.innerHTML += `
+                    <tr>
+                        <td><strong>${ex.nome}</strong></td>
+                        <td>${ex.series_padrao}</td>
+                        <td class="${progressoClass}">${progresso.texto}</td>
+                        <td><div class="registro-container">${seriesInputs}</div></td>
+                    </tr>
+                `;
+            });
+        }
+
+        function salvarTreino() {
+            const historico = getHistorico();
+            const exerciciosDoTreino = [];
+            
+            const data = new Date();
+            const dataAtual = data.getFullYear() + '-' + String(data.getMonth() + 1).padStart(2, '0') + '-' + String(data.getDate()).padStart(2, '0');
+
+            const linhasTabela = document.querySelectorAll('#listaExercicios tr');
+            
+            linhasTabela.forEach(linha => {
+                const nomeElement = linha.querySelector('td strong');
+                if (!nomeElement) return;
+
+                const nomeExercicio = nomeElement.textContent.trim();
+                const inputsReps = linha.querySelectorAll('[data-tipo="reps"]');
+                const inputsCarga = linha.querySelectorAll('[data-tipo="carga"]');
+                
+                const registroExercicio = [];
+
+                inputsReps.forEach((inputReps, i) => {
+                    const cargaInput = inputsCarga[i];
+                    const reps = parseInt(inputReps.value) || 0;
+                    const carga = parseFloat(cargaInput.value) || 0;
+
+                    if (reps > 0 || carga > 0) {
+                        registroExercicio.push({ reps, carga });
+                    }
+                });
+
+                if (registroExercicio.length > 0) {
+                    exerciciosDoTreino.push({
+                        nome: nomeExercicio,
+                        registro: registroExercicio
+                    });
+                }
+            });
+
+            if (exerciciosDoTreino.length === 0) {
+                document.getElementById('mensagemSalvamento').innerHTML = '⚠️ Não há exercícios registrados para salvar. Preencha a carga/repetição.';
+                return;
+            }
+
+            // Remove registros antigos da mesma data para evitar duplicação
+            const historicoFiltrado = historico.filter(reg => reg.data !== dataAtual);
+
+            const novoRegistro = {
+                data: dataAtual,
+                exercicios: exerciciosDoTreino
+            };
+
+            historicoFiltrado.push(novoRegistro);
+            
+            const chave = `historico_${treinoAtual.codigo}`;
+            localStorage.setItem(chave, JSON.stringify(historicoFiltrado));
+
+            document.getElementById('mensagemSalvamento').innerHTML = `✅ Treino de ${dataAtual} salvo com sucesso! Sua progressão foi atualizada.`;
+            
+            filtrarExercicios();
+        }
+
+        // Inicializa o app ao carregar a página
+        window.onload = init;
+
+    </script>
 </body>
 </html>
