@@ -3,322 +3,315 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>💪 Meu Diário de Treino Profissional</title>
+    <title>⚡ Diário de Treino | Geração Alpha IA</title>
     <style>
-        /* --- ESTILOS CSS PROFISSIONAIS --- */
+        /* --- CONFIGURAÇÃO GLOBAL --- */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
+        
         :root {
-            --primary-color: #4CAF50; /* Verde Fitness */
-            --secondary-color: #2196F3; /* Azul para Ação */
-            --text-color: #333;
-            --bg-light: #f9f9f9;
-            --border-color: #e0e0e0;
+            --bg-dark: #121228; 
+            --bg-card: #1f1f45; 
+            --primary-neon: #00e0ff; 
+            --secondary-neon: #76ff03; 
+            --accent-glow: rgba(0, 224, 255, 0.6); 
+            --text-light: #e6e6fa; 
+            --border-dark: #353560;
+            --danger-color: #ff4081; 
+            --menu-bg: #18183a;
+            --ia-color: #ffc300; 
+            --rest-color: #f72585; 
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Roboto Mono', monospace, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: var(--bg-light);
-            color: var(--text-color);
+            background-color: var(--bg-dark);
+            color: var(--text-light);
             line-height: 1.6;
         }
         
         .container {
-            max-width: 1000px;
-            margin: 30px auto;
-            background: #fff;
-            padding: 30px 40px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 1100px;
+            margin: 40px auto; 
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.6), 0 0 15px var(--primary-neon);
+            border: 1px solid var(--border-dark);
         }
 
         h1 {
-            color: var(--primary-color);
+            color: var(--primary-neon);
             text-align: center;
-            margin-bottom: 25px;
-            font-size: 2.2em;
+            margin-bottom: 30px;
+            font-size: 2.8em;
+            text-shadow: 0 0 15px var(--accent-glow);
+            letter-spacing: 2px;
         }
 
-        h2, h3 {
-            color: var(--secondary-color);
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 8px;
-            margin-top: 30px;
+        h2, h3, h4 {
+            color: var(--secondary-neon);
+            border-bottom: 2px solid var(--border-dark);
+            padding-bottom: 10px;
+            margin-top: 40px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
         }
 
-        /* --- Formulários e Botões --- */
-        .form-group {
-            margin-bottom: 20px;
+        /* --- NAVEGAÇÃO LIMPA POR ABAS --- */
+        #nav-menu {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 15px 0;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--border-dark);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
         }
-        
-        input[type="text"], input[type="number"], select {
-            padding: 12px;
-            border-radius: 6px;
-            border: 1px solid var(--border-color);
-            width: 100%;
-            box-sizing: border-box;
-            margin-top: 5px;
-            transition: border-color 0.3s;
-        }
-        
-        input:focus, select:focus {
-            border-color: var(--primary-color);
-            outline: none;
-        }
-
-        .btn {
-            padding: 12px 20px;
-            border-radius: 6px;
-            border: none;
-            width: 100%;
-            box-sizing: border-box;
-            margin-top: 10px;
-            font-weight: bold;
+        .nav-button {
+            padding: 12px 25px;
+            border: 1px solid var(--border-dark);
+            border-radius: 8px; 
+            background-color: var(--menu-bg);
+            color: var(--text-light);
             cursor: pointer;
-            transition: background-color 0.3s, transform 0.1s;
+            transition: all 0.3s ease-in-out;
+            font-weight: 700;
+            text-transform: uppercase;
         }
-        
-        .btn-primary {
-            background-color: var(--primary-color);
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            background-color: #43a047; /* Tom mais escuro */
-            transform: translateY(-1px);
-        }
-
-        .btn-secondary {
-            background-color: #ffc107; /* Amarelo */
-            color: #333;
-        }
-        .btn-secondary:hover {
-            background-color: #e0a800;
+        .nav-button.active {
+            background-color: var(--primary-neon);
+            color: var(--bg-dark);
+            border: 1px solid var(--primary-neon);
+            box-shadow: 0 0 20px var(--accent-glow);
+            transform: scale(1.05); 
         }
 
-        .btn-danger {
-            background-color: #dc3545;
+        /* --- CRONÔMETRO --- */
+        #rest-timer-container {
+            background-color: #351f45;
+            border: 2px solid var(--rest-color);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 20px;
+            box-shadow: 0 0 20px rgba(247, 37, 133, 0.6);
+            display: none;
+            position: sticky;
+            top: 20px; 
+            z-index: 1000;
+        }
+        #rest-timer {
+            font-size: 3em;
+            font-weight: 700;
+            color: var(--rest-color);
+            text-shadow: 0 0 10px var(--rest-color);
+            margin-bottom: 10px;
+        }
+        .btn-rest {
+            background-color: var(--rest-color);
             color: white;
             width: auto;
-            display: block;
-            margin-top: 30px;
-        }
-
-        .btn-danger:hover {
-            background-color: #c82333;
-        }
-
-        /* --- Checkboxes de Filtro --- */
-        .checkbox-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            padding: 10px 0;
-        }
-        .checkbox-group label {
-            background-color: var(--bg-light);
+            margin-top: 15px;
             padding: 8px 15px;
-            border-radius: 20px;
-            border: 1px solid var(--border-color);
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .checkbox-group input[type="checkbox"] {
-            display: none; /* Esconde o checkbox padrão */
-        }
-        .checkbox-group input[type="checkbox"]:checked + label {
-            background-color: var(--secondary-color);
-            color: white;
-            border-color: var(--secondary-color);
-            font-weight: bold;
-        }
-
-        /* --- Tabela de Treino --- */
-        #tabelaTreino {
-            margin-top: 20px;
-            border-radius: 8px;
-            overflow: hidden; 
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-        }
-        
-        th, td {
-            padding: 12px 15px;
-            border: 1px solid var(--border-color);
-            text-align: left;
-            vertical-align: middle;
-        }
-        
-        th {
-            background-color: var(--primary-color);
-            color: white;
-            font-weight: 600;
-        }
-        
-        tr:nth-child(even) {
-            background-color: #f7f7f7;
-        }
-
-        /* Coluna de Registro */
-        .registro-container {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-        .registro-serie {
-            display: flex;
-            align-items: center;
-            gap: 5px;
             font-size: 0.9em;
         }
-        .registro-input {
-            width: 70px !important; 
-            padding: 5px;
-            text-align: center;
-            height: auto;
-            margin-top: 0;
-        }
 
-        /* Progresso */
-        .progresso-texto {
-            font-weight: bold;
-            color: #198754; 
-            font-size: 1.1em;
+        /* --- CAMPOS / TABELAS / IA --- */
+        input {
+            transition: border-color 0.3s, box-shadow 0.3s;
         }
-        .novo-ex {
-            color: #ffc107; 
+        .btn {
+            transition: all 0.3s ease-in-out;
         }
-
-        /* Mensagens */
-        #mensagemErro {
-            color: #dc3545;
-            margin-top: 15px;
-            font-weight: bold;
+        .checkbox-group input[type="checkbox"]:checked + label {
+            box-shadow: 0 0 12px var(--secondary-neon);
         }
-        #mensagemSalvamento {
-            color: var(--primary-color);
-            font-weight: bold;
-            margin-top: 15px;
-            padding: 10px;
-            background-color: #e6ffe6;
-            border-radius: 4px;
+        table {
+            background-color: #25254a;
         }
-
-        /* Estilo para Adicionar Exercício */
-        #add-exercise-form {
-            background-color: #f0f0f0;
-            padding: 20px;
+        tr:hover {
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.4);
+        }
+        .ia-suggestion {
+            font-size: 0.85em;
+            color: var(--ia-color);
+            margin-top: 5px;
+            display: block;
+            font-style: italic;
+        }
+        #ia-feedback-container {
+            background-color: #303055;
+            border: 2px solid var(--ia-color);
+            padding: 15px;
             border-radius: 8px;
             margin-top: 20px;
-            display: none; /* Esconde por padrão */
+            box-shadow: 0 0 10px var(--ia-color);
+            display: none;
         }
-        .form-row {
-            display: flex;
-            gap: 20px;
+        #ia-feedback-container strong {
+            color: var(--ia-color);
+            text-shadow: 0 0 5px var(--ia-color);
         }
-        .form-row > div {
-            flex: 1;
+        .registro-input {
+            width: 50px !important; 
+        }
+        .table-btn {
+            width: auto !important; 
+            padding: 6px 12px; 
+            margin: 2px 0; 
+            font-size: 0.8em;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>🏋️ Diário de Treino Online</h1>
+        <h1>⚡ [ ALPHA G.Y.M. ] | IA TRAINER</h1>
 
         <div id="login-screen">
-            <h2>🔑 Acessar Treino</h2>
+            <h2>🔑 ACESSO AO SISTEMA | CÓDIGO DE SEGURANÇA</h2>
             <div class="form-group">
-                <label for="codigoInput">Insira seu Código de Treino:</label>
+                <label for="codigoInput">CHAVE DE IDENTIFICAÇÃO:</label>
                 <input type="text" id="codigoInput" placeholder="Ex: TREINOA (Rykelmy) ou TREINOB (Luísa)">
             </div>
-            <button class="btn btn-primary" onclick="acessarTreino()">Entrar</button>
+            <button class="btn btn-primary" onclick="acessarTreino()">CONECTAR AO BANCO DE DADOS</button>
             <p id="mensagemErro"></p>
         </div>
 
-        <div id="app-screen">
+        <div id="app-screen" style="display: none;">
             <h2 id="tituloTreino"></h2>
 
-            <h3>Selecione os Grupos Musculares de Hoje</h3>
-            <div id="grupoMuscularCheckboxes" class="checkbox-group">
-                </div>
-            <button class="btn btn-primary" onclick="filtrarExercicios()">✅ Aplicar Filtro</button>
+            <div id="rest-timer-container">
+                <p id="rest-message">Tempo de Descanso Sugerido pela IA:</p>
+                <div id="rest-timer">00:00</div>
+                <button class="btn btn-rest" onclick="pararDescanso()">PULAR / ENCERRAR DESCANSO</button>
+            </div>
             
-            <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 25px 0;">
+            <div id="nav-menu">
+                <button id="nav-registro" class="nav-button active" onclick="navegarPara('registro')">🏋️ REGISTRO DE TREINO</button>
+                <button id="nav-add" class="nav-button" onclick="navegarPara('add')">➕ ADICIONAR EXERCÍCIO</button>
+                <button id="nav-historico" class="nav-button" onclick="navegarPara('historico')">📋 HISTÓRICO DE LOGS</button>
+            </div>
+            
+            <div id="registro-section" class="app-section">
+                
+                <h3>[ FILTRO ] SELEÇÃO DE GRUPOS MUSCULARES</h3>
+                <div id="grupoMuscularCheckboxes" class="checkbox-group">
+                    </div>
+                
+                <h3 id="subTituloExercicios"></h3>
+                
+                <table id="tabelaTreino">
+                    <thead>
+                        <tr>
+                            <th>EXERCÍCIO</th>
+                            <th style="width: 20%;">SÉRIES/SUGESTÃO IA</th>
+                            <th style="width: 15%;">PROGRESSÃO (KG MÁX.)</th>
+                            <th>REGISTRO DE SÉRIES</th>
+                            <th style="width: 15%;">OPÇÕES</th>
+                        </tr>
+                    </thead>
+                    <tbody id="listaExercicios">
+                        <tr><td colspan="5" style="text-align: center;">Selecione um grupo muscular acima para carregar o treino.</td></tr>
+                    </tbody>
+                </table>
 
-            <button class="btn btn-secondary" onclick="toggleAddExerciseForm()">➕ Adicionar Novo Exercício</button>
-
-            <div id="add-exercise-form">
-                <h4>Adicionar ao Plano de Treino</h4>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="newExName">Nome do Exercício:</label>
-                        <input type="text" id="newExName" placeholder="Ex: Agachamento Búlgaro">
-                    </div>
-                    <div class="form-group">
-                        <label for="newExGroup">Grupo Muscular:</label>
-                        <input type="text" id="newExGroup" placeholder="Ex: Pernas">
-                    </div>
-                    <div class="form-group">
-                        <label for="newExSeries">Séries Padrão:</label>
-                        <input type="text" id="newExSeries" placeholder="Ex: 3x12 ou 4x8-10">
-                    </div>
+                <div style="margin-top: 25px; display: flex; justify-content: space-between; align-items: center;">
+                    <button class="btn btn-primary" style="width: 60%;" onclick="salvarTreino()">💾 [ ENVIAR LOG ] SALVAR TREINO AGORA</button>
+                    <button class="btn btn-danger" style="width: 35%; margin-top: 0;" onclick="logout()">[ DESCONECTAR ]</button>
                 </div>
-                <button class="btn btn-primary" onclick="adicionarExercicioCustomizado()">Salvar Novo Exercício</button>
-                <p id="mensagemAdicao" style="margin-top: 10px;"></p>
+                <p id="mensagemSalvamento"></p>
+
+                <div id="ia-feedback-container" style="display: none;">
+                    <p id="ia-feedback-text"></p>
+                </div>
             </div>
 
 
-            <h3 id="subTituloExercicios"></h3>
-            
-            <table id="tabelaTreino">
-                <thead>
-                    <tr>
-                        <th>Exercício</th>
-                        <th style="width: 15%;">Séries Padrão</th>
-                        <th style="width: 15%;">Progresso (Carga Máx.)</th>
-                        <th>Registro de Séries (Repetições x Carga em kg)</th>
-                    </tr>
-                </thead>
-                <tbody id="listaExercicios">
-                    <tr><td colspan="4" style="text-align: center;">Utilize o filtro acima para ver os exercícios.</td></tr>
-                </tbody>
-            </table>
-
-            <div style="margin-top: 25px; display: flex; justify-content: space-between; align-items: center;">
-                <button class="btn btn-primary" style="width: 60%;" onclick="salvarTreino()">💾 Salvar Treino de Hoje</button>
-                <button class="btn btn-danger" style="width: 35%; margin-top: 0;" onclick="logout()">Sair / Mudar Código</button>
+            <div id="add-section" class="app-section">
+                <div id="add-exercise-form">
+                    <h4>CRIAR NOVO ITEM AO PLANO</h4>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="newExName">NOME DO EXERCÍCIO:</label>
+                            <input type="text" id="newExName" placeholder="Ex: Agachamento Búlgaro">
+                        </div>
+                        <div class="form-group">
+                            <label for="newExGroup">GRUPO MUSCULAR (TAG):</label>
+                            <input type="text" id="newExGroup" placeholder="Ex: Pernas">
+                        </div>
+                        <div class="form-group">
+                            <label for="newExSeries">SÉRIES/REPETIÇÕES PADRÃO:</label>
+                            <input type="text" id="newExSeries" placeholder="Ex: 3x12 ou 4x8-10">
+                        </div>
+                    </div>
+                    <button class="btn btn-primary table-btn" style="width: auto;" onclick="adicionarExercicioCustomizado()">[ SALVAR DEFINIÇÃO ]</button>
+                    <p id="mensagemAdicao" style="margin-top: 10px;"></p>
+                </div>
             </div>
+
             
-            <p id="mensagemSalvamento"></p>
+            <div id="historico-section" class="app-section">
+                <h3>📅 LOGS DE TREINOS ANTERIORES | DATABASE</h3>
+                
+                <table id="tabelaHistorico">
+                    <thead>
+                        <tr>
+                            <th style="width: 30%;">DATA DO LOG</th>
+                            <th style="width: 70%;">AÇÃO</th>
+                        </tr>
+                    </thead>
+                    <tbody id="listaHistorico">
+                        </tbody>
+                </table>
+
+                <div id="historico-detalhe" style="display: none;">
+                    </div>
+            </div>
+
         </div>
     </div>
 
     <script>
-        // CHAVE PARA SALVAR O PLANO BASE PERSONALIZADO NO LOCAL STORAGE
         const LOCAL_PLAN_KEY_PREFIX = "base_plan_";
+        const HISTORICO_KEY_PREFIX = "historico_";
+        let timerInterval;
+
+        // --- Mapeamento de Tempo de Descanso por Grupo Muscular (IA) ---
+        const TEMPO_DESCANSO_IA = {
+            'Pernas': 120,    // 2 minutos (alta intensidade/grandes grupos)
+            'Costas': 90,     // 1.5 minutos
+            'Peito': 90,      // 1.5 minutos
+            'Ombro': 60,      // 1 minuto (médio/baixo)
+            'Bíceps': 60,     // 1 minuto (pequenos grupos)
+            'Tríceps': 60,
+            'Panturrilha': 45, // 45 segundos (baixo)
+            'Custom': 75     // Padrão
+        };
+
 
         // --- DADOS MOCKADOS (Planos Base Iniciais) ---
         const TREINOS_PRONTOS_INICIAIS = [
             {
-                codigo: "TREINOA",
-                aluno: "Rykelmy", 
-                nome: "Plano Completo Atualizado",
+                codigo: "TREINOA", aluno: "Rykelmy", nome: "Plano Completo",
                 exercicios: [
-                    // Treino de Costas
                     { nome: "Puxada na frente", grupo: "Costas", series_padrao: "4x10-12" },
                     { nome: "Remada baixa", grupo: "Costas", series_padrao: "4x10-12" },
                     { nome: "Remada curvada", grupo: "Costas", series_padrao: "3x8-10" },
                     { nome: "Pullover na corda", grupo: "Costas", series_padrao: "3x12-15" },
-                    // Treino de Bíceps
                     { nome: "Rosca direta", grupo: "Bíceps", series_padrao: "4x10-12" },
                     { nome: "Rosca alternada", grupo: "Bíceps", series_padrao: "3x10-12" },
                     { nome: "Rosca martelo", grupo: "Bíceps", series_padrao: "3x10-12" },
-                    // Treino de Peito
                     { nome: "Supino reto", grupo: "Peito", series_padrao: "4x8-12" },
                     { nome: "Supino inclinado", grupo: "Peito", series_padrao: "3x10-12" },
                     { nome: "Crucifixo", grupo: "Peito", series_padrao: "3x12-15" },
                     { nome: "Voador", grupo: "Peito", series_padrao: "3x12-15" },
-                    // Treino de Perna
                     { nome: "Agachamento livre", grupo: "Pernas", series_padrao: "4x8-12" },
                     { nome: "Leg press", grupo: "Pernas", series_padrao: "4x10-15" },
                     { nome: "Extensora", grupo: "Pernas", series_padrao: "3x12-15" },
@@ -327,9 +320,7 @@
                 ]
             },
             {
-                codigo: "TREINOB",
-                aluno: "Luísa", 
-                nome: "Foco: Pernas e Ombro",
+                codigo: "TREINOB", aluno: "Luísa", nome: "Foco: Pernas e Ombro",
                 exercicios: [
                     { nome: "Agachamento Livre", grupo: "Pernas", series_padrao: "4x8" },
                     { nome: "Leg Press", grupo: "Pernas", series_padrao: "3x12" },
@@ -341,7 +332,72 @@
 
         let treinoAtual = null;
 
-        // --- FUNÇÕES DE CONTROLE DE TELA ---
+
+        // --- FUNÇÕES DO CRONÔMETRO DE DESCANSO INTELIGENTE ---
+        
+        function iniciarDescanso(grupoMuscular) {
+            const tempoSegundos = TEMPO_DESCANSO_IA[grupoMuscular] || TEMPO_DESCANSO_IA['Custom'];
+            let segundosRestantes = tempoSegundos;
+
+            document.getElementById('rest-timer-container').style.display = 'block';
+            document.getElementById('rest-message').textContent = `[IA] ${grupoMuscular} em Foco. Descanso Sugerido: ${tempoSegundos} segundos.`;
+            document.getElementById('rest-timer').textContent = formatarTempo(segundosRestantes);
+
+            clearInterval(timerInterval);
+
+            timerInterval = setInterval(() => {
+                segundosRestantes--;
+                document.getElementById('rest-timer').textContent = formatarTempo(segundosRestantes);
+
+                if (segundosRestantes <= 0) {
+                    clearInterval(timerInterval);
+                    document.getElementById('rest-timer').textContent = "00:00";
+                    document.getElementById('rest-message').innerHTML = `<strong>[ALERTA] TEMPO ESGOTADO!</strong> Próxima série!`;
+                }
+            }, 1000);
+        }
+
+        function pararDescanso() {
+            clearInterval(timerInterval);
+            document.getElementById('rest-timer-container').style.display = 'none';
+        }
+
+        function formatarTempo(totalSegundos) {
+            const minutos = Math.floor(totalSegundos / 60);
+            const segundos = totalSegundos % 60;
+            return `${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
+        }
+        
+        // --- FUNÇÃO DE NAVEGAÇÃO CENTRALIZADA ---
+        function navegarPara(secao) {
+            pararDescanso(); 
+            
+            const secoes = ['registro', 'add', 'historico'];
+            const navButtons = document.querySelectorAll('.nav-button');
+
+            secoes.forEach(id => {
+                const elemento = document.getElementById(id + '-section');
+                const navBtn = document.getElementById('nav-' + id);
+                
+                if (id === secao) {
+                    elemento.style.display = 'block';
+                    navBtn.classList.add('active');
+                    
+                    if (secao === 'historico') {
+                        carregarListaHistorico();
+                    }
+                    if (secao === 'registro') {
+                        filtrarExercicios();
+                    }
+                } else {
+                    elemento.style.display = 'none';
+                    navBtn.classList.remove('active');
+                }
+            });
+        }
+
+
+        // --- FUNÇÕES DE INICIALIZAÇÃO E CONTROLE DE TELA ---
 
         function init() {
             const codigoSalvo = sessionStorage.getItem('codigoTreino');
@@ -350,27 +406,22 @@
                 acessarTreino(codigoSalvo);
             } else {
                 document.getElementById('app-screen').style.display = 'none';
-                document.getElementById('subTituloExercicios').textContent = '';
             }
         }
 
         function acessarTreino(codigoPreenchido) {
             const codigo = codigoPreenchido || document.getElementById('codigoInput').value.toUpperCase().trim();
             
-            // 1. Tenta carregar o plano personalizado do localStorage
             const localPlanKey = LOCAL_PLAN_KEY_PREFIX + codigo;
             const planoPersonalizado = localStorage.getItem(localPlanKey);
 
             let treinoEncontrado;
 
             if (planoPersonalizado) {
-                // Se o plano personalizado existe, usa ele
                 treinoEncontrado = JSON.parse(planoPersonalizado);
             } else {
-                // Caso contrário, usa o plano inicial (hardcoded)
                 treinoEncontrado = TREINOS_PRONTOS_INICIAIS.find(t => t.codigo === codigo);
             }
-
 
             if (treinoEncontrado) {
                 treinoAtual = treinoEncontrado;
@@ -380,95 +431,53 @@
                 document.getElementById('login-screen').style.display = 'none';
                 document.getElementById('app-screen').style.display = 'block';
                 
-                // SAUDAÇÃO PERSONALIZADA
-                document.getElementById('tituloTreino').textContent = `Olá, ${treinoAtual.aluno}! 👋 Seu Plano: ${treinoAtual.nome} (${treinoAtual.codigo})`;
+                document.getElementById('tituloTreino').textContent = `[ STATUS: ONLINE ] Olá, ${treinoAtual.aluno}! Plano Ativo: ${treinoAtual.nome}`;
                 
                 carregarFiltros();
+                navegarPara('registro');
                 
             } else {
-                document.getElementById('mensagemErro').textContent = '❌ Código de treino inválido. Tente TREINOA ou TREINOB.';
+                document.getElementById('mensagemErro').textContent = '❌ [ ERRO 404 ] Código de acesso inválido.';
                 treinoAtual = null;
             }
         }
 
         function logout() {
+            pararDescanso();
             sessionStorage.removeItem('codigoTreino');
             treinoAtual = null;
             document.getElementById('app-screen').style.display = 'none';
             document.getElementById('login-screen').style.display = 'block';
             document.getElementById('codigoInput').value = '';
-            document.getElementById('listaExercicios').innerHTML = ''; 
+            document.getElementById('listaExercicios').innerHTML = '<tr><td colspan="5" style="text-align: center;">Aguardando Conexão...</td></tr>'; 
             document.getElementById('mensagemSalvamento').textContent = '';
             document.getElementById('subTituloExercicios').textContent = '';
+            document.getElementById('ia-feedback-container').style.display = 'none';
         }
 
-        // --- FUNÇÕES DE ADIÇÃO DE EXERCÍCIO ---
-
-        function toggleAddExerciseForm() {
-            const form = document.getElementById('add-exercise-form');
-            form.style.display = form.style.display === 'block' ? 'none' : 'block';
-            document.getElementById('mensagemAdicao').textContent = '';
+        function getHistorico() {
+            const chave = HISTORICO_KEY_PREFIX + treinoAtual.codigo;
+            const historicoJSON = localStorage.getItem(chave);
+            return historicoJSON ? JSON.parse(historicoJSON) : [];
         }
 
-        function adicionarExercicioCustomizado() {
-            const nome = document.getElementById('newExName').value.trim();
-            const grupo = document.getElementById('newExGroup').value.trim();
-            const series = document.getElementById('newExSeries').value.trim();
-            const msg = document.getElementById('mensagemAdicao');
 
-            if (!nome || !grupo || !series) {
-                msg.innerHTML = '<span style="color: red;">⚠️ Por favor, preencha todos os campos.</span>';
-                return;
-            }
-
-            const novoExercicio = {
-                nome: nome,
-                grupo: grupo,
-                series_padrao: series
-            };
-
-            // Adiciona ao plano atual na memória
-            treinoAtual.exercicios.push(novoExercicio);
-
-            // 2. Salva o plano atualizado no LocalStorage para persistir
-            const localPlanKey = LOCAL_PLAN_KEY_PREFIX + treinoAtual.codigo;
-            localStorage.setItem(localPlanKey, JSON.stringify(treinoAtual));
-
-            // 3. Limpa os campos e atualiza a UI
-            document.getElementById('newExName').value = '';
-            document.getElementById('newExGroup').value = '';
-            document.getElementById('newExSeries').value = '';
-
-            msg.innerHTML = '<span style="color: green; font-weight: bold;">✅ Exercício adicionado e salvo no plano! Re-filtre para ver na lista.</span>';
-            
-            // Recarrega filtros para incluir o novo grupo, se for o caso
-            carregarFiltros();
-            
-            // Re-renderiza a lista se já houver filtros aplicados (ou faz o usuário clicar em filtrar de novo)
-            // Se o usuário já filtrou, vamos aplicar o filtro novamente.
-            const checkboxes = document.querySelectorAll('#grupoMuscularCheckboxes input:checked');
-            if (checkboxes.length > 0) {
-                filtrarExercicios();
-            }
-        }
-
-        // --- FUNÇÕES DE FILTRAGEM E VISUALIZAÇÃO ---
+        // --- FUNÇÕES DE FILTRAGEM E RENDERIZAÇÃO ---
 
         function carregarFiltros() {
             const container = document.getElementById('grupoMuscularCheckboxes');
             container.innerHTML = '';
             
-            // Pega todos os grupos únicos do treino atual (incluindo customizados)
             const grupos = [...new Set(treinoAtual.exercicios.map(ex => ex.grupo))].sort(); 
             
             grupos.forEach(grupo => {
                 const id = `check-${grupo.replace(/\s/g, '')}`; 
                 container.innerHTML += `
-                    <input type="checkbox" id="${id}" value="${grupo}">
+                    <input type="checkbox" id="${id}" value="${grupo}" onchange="filtrarExercicios()">
                     <label for="${id}">${grupo}</label>
                 `;
             });
-            document.getElementById('subTituloExercicios').textContent = 'Selecione os grupos e clique em Aplicar Filtro.';
+            document.getElementById('subTituloExercicios').textContent = '[ LISTA ] Selecione os grupos para ver o treino.';
         }
 
         function filtrarExercicios() {
@@ -479,26 +488,21 @@
                 gruposSelecionados.includes(ex.grupo)
             );
             
-            if (exerciciosFiltrados.length === 0 && gruposSelecionados.length > 0) {
-                 document.getElementById('subTituloExercicios').textContent = 'Nenhum exercício encontrado para os grupos selecionados.';
-            } else if (gruposSelecionados.length === 0) {
-                 document.getElementById('subTituloExercicios').textContent = 'Selecione pelo menos um grupo muscular.';
+            if (gruposSelecionados.length === 0) {
+                 document.getElementById('subTituloExercicios').textContent = '[ STATUS ] Selecione os grupos para exibir a lista.';
             } else {
-                document.getElementById('subTituloExercicios').textContent = `Lista de Exercícios: ${gruposSelecionados.join(', ')}`;
+                document.getElementById('subTituloExercicios').textContent = `[ ATIVO ] Grupos: ${gruposSelecionados.join(', ')}`;
             }
 
             renderizarExercicios(exerciciosFiltrados);
         }
 
-        function getHistorico() {
-            const chave = `historico_${treinoAtual.codigo}`;
-            const historicoJSON = localStorage.getItem(chave);
-            return historicoJSON ? JSON.parse(historicoJSON) : [];
-        }
-
-        function getProgressoExercicio(nomeExercicio, historico) {
+        // IA - Sugestão de Carga
+        function getProgressoExercicio(nomeExercicio, historico, grupoMuscular) {
             let cargaMaxima = 0;
             let ultimaCarga = '';
+            let sugestao = '';
+            const tempoDescanso = TEMPO_DESCANSO_IA[grupoMuscular] || TEMPO_DESCANSO_IA['Custom'];
 
             for (const treino of historico) {
                 const ex = treino.exercicios.find(e => e.nome === nomeExercicio);
@@ -510,38 +514,49 @@
                     ultimaCarga = ex.registro[ex.registro.length - 1].carga;
                 }
             }
+            
+            if (cargaMaxima > 0) {
+                if (ultimaCarga === cargaMaxima && cargaMaxima > 5) {
+                    sugestao = `[IA]: PRÓXIMA META: ${cargaMaxima + 1}kg. Descanso: ${tempoDescanso}s.`;
+                } else {
+                    sugestao = `[IA]: Último registro: ${ultimaCarga}kg. Descanso: ${tempoDescanso}s.`;
+                }
+            } else {
+                 sugestao = `[IA]: Primeira carga. Descanso sugerido: ${tempoDescanso}s.`;
+            }
+
 
             return {
-                texto: cargaMaxima > 0 ? `${cargaMaxima} kg` : 'Novo',
-                ultimaCarga: ultimaCarga
+                texto: cargaMaxima > 0 ? `${cargaMaxima} kg` : '[ NOVO ]',
+                ultimaCarga: ultimaCarga,
+                sugestao: sugestao
             };
         }
 
         function renderizarExercicios(exercicios) {
             const lista = document.getElementById('listaExercicios');
-            lista.innerHTML = '';
             const historico = getHistorico();
+            lista.innerHTML = ''; 
             
             if (exercicios.length === 0) {
-                lista.innerHTML = '<tr><td colspan="4" style="text-align: center;">Selecione um grupo muscular acima e clique em "Aplicar Filtro".</td></tr>';
+                lista.innerHTML = '<tr><td colspan="5" style="text-align: center; color: var(--text-light);">Nenhum exercício selecionado ou encontrado no filtro.</td></tr>';
                 return;
             }
 
             exercicios.forEach((ex, index) => {
-                const progresso = getProgressoExercicio(ex.nome, historico);
+                const progresso = getProgressoExercicio(ex.nome, historico, ex.grupo); 
                 
                 const numSeriesMatch = ex.series_padrao.match(/^(\d+)/);
                 const numSeries = numSeriesMatch ? parseInt(numSeriesMatch[1]) : 3;
 
                 let seriesInputs = '';
                 for(let i = 1; i <= numSeries; i++) {
-                    // Tenta extrair a repetição padrão (pode ser um intervalo como 10-12)
                     const repsPattern = ex.series_padrao.split('x')[1];
                     const repsPadrao = repsPattern ? repsPattern.split('-')[0].trim() : 12;
 
                     seriesInputs += `
                         <div class="registro-serie">
-                            Série ${i}: 
+                            S${i}: 
                             <input type="number" placeholder="${repsPadrao}" class="registro-input" data-ex-index="${index}" data-serie="${i}" data-tipo="reps" value="${repsPadrao}">
                             x
                             <input type="number" placeholder="Carga" class="registro-input" data-ex-index="${index}" data-serie="${i}" data-tipo="carga" value="${progresso.ultimaCarga || ''}"> kg
@@ -549,20 +564,73 @@
                     `;
                 }
                 
-                const progressoClass = progresso.texto === 'Novo' ? 'novo-ex' : 'progresso-texto';
+                const progressoClass = progresso.texto === '[ NOVO ]' ? 'novo-ex' : 'progresso-texto';
 
                 lista.innerHTML += `
-                    <tr>
-                        <td><strong>${ex.nome}</strong></td>
-                        <td>${ex.series_padrao}</td>
+                    <tr class="fade-in"> 
+                        <td><strong style="color: var(--primary-neon);">${ex.nome}</strong> (${ex.grupo})</td>
+                        <td>
+                            <div style="font-size: 1.1em; font-weight: bold;">${ex.series_padrao}</div>
+                            <span class="ia-suggestion">${progresso.sugestao}</span> 
+                            <button class="btn btn-rest table-btn" style="margin-top: 5px;" 
+                                onclick="iniciarDescanso('${ex.grupo}')">
+                                ⏱️ INICIAR DESCANSO IA
+                            </button>
+                        </td>
                         <td class="${progressoClass}">${progresso.texto}</td>
                         <td><div class="registro-container">${seriesInputs}</div></td>
+                        <td>
+                            <button class="btn btn-danger table-btn" 
+                                onclick="removerExercicioDoPlano('${ex.nome}')">
+                                🗑️ REMOVER
+                            </button>
+                        </td>
                     </tr>
                 `;
             });
         }
 
+
+        // --- NOVO: IA - Feedback Pós-Treino ---
+
+        function gerarFeedbackIA(exerciciosDoTreino) {
+            const gruposTreinados = [...new Set(exerciciosDoTreino.map(ex => ex.grupo))];
+            let progressoAtingido = 0;
+            let totalExercicios = exerciciosDoTreino.length;
+
+            exerciciosDoTreino.forEach(ex => {
+                const maxCargaSessao = Math.max(...ex.registro.map(r => r.carga));
+                if (maxCargaSessao > 0) {
+                    progressoAtingido++;
+                }
+            });
+
+            if (totalExercicios === 0) {
+                return "Não há dados para analisar. Registre pelo menos uma série.";
+            }
+
+            const porcentagem = (progressoAtingido / totalExercicios) * 100;
+            let feedback = `Análise de Desempenho (${new Date().toLocaleDateString('pt-BR')}): `;
+
+            if (porcentagem > 90) {
+                feedback += "Desempenho **EXCELENTE**! Foco e esforço máximo detectados. Você está no caminho da **Hipertrofia Otimizada**.";
+            } else if (porcentagem > 60) {
+                feedback += "Desempenho **BOM**. A maioria dos exercícios foi registrada. Para otimizar o resultado, mantenha o foco no tempo de descanso sugerido pela IA.";
+            } else {
+                feedback += "Desempenho **MODERADO**. Apenas " + progressoAtingido + " de " + totalExercicios + " exercícios foram salvos com carga. Reveja a frequência ou a distribuição de energia na sessão.";
+            }
+
+            feedback += `<br>Grupos Focados: ${gruposTreinados.join(', ')}.`;
+            
+            return feedback;
+        }
+
+
+        // --- FUNÇÃO DE SALVAMENTO (INTEGRAÇÃO IA CORRIGIDA) ---
+
         function salvarTreino() {
+            pararDescanso();
+            
             const historico = getHistorico();
             const exerciciosDoTreino = [];
             
@@ -575,7 +643,11 @@
                 const nomeElement = linha.querySelector('td strong');
                 if (!nomeElement) return;
 
-                const nomeExercicio = nomeElement.textContent.trim();
+                const nomeCompleto = nomeElement.textContent.trim();
+                const nomeExercicio = nomeCompleto.split('(')[0].trim();
+                const matchGrupo = nomeCompleto.match(/\(([^)]+)\)/);
+                const grupoMuscular = matchGrupo ? matchGrupo[1] : 'Desconhecido';
+                
                 const inputsReps = linha.querySelectorAll('[data-tipo="reps"]');
                 const inputsCarga = linha.querySelectorAll('[data-tipo="carga"]');
                 
@@ -594,17 +666,18 @@
                 if (registroExercicio.length > 0) {
                     exerciciosDoTreino.push({
                         nome: nomeExercicio,
-                        registro: registroExercicio
+                        registro: registroExercicio,
+                        grupo: grupoMuscular
                     });
                 }
             });
 
             if (exerciciosDoTreino.length === 0) {
-                document.getElementById('mensagemSalvamento').innerHTML = '⚠️ Não há exercícios registrados para salvar. Preencha a carga/repetição.';
+                document.getElementById('mensagemSalvamento').innerHTML = '[ ALERTA ] Nenhum registro de treino enviado. Preencha as séries.';
+                document.getElementById('ia-feedback-container').style.display = 'none'; 
                 return;
             }
 
-            // Remove registros antigos da mesma data para evitar duplicação
             const historicoFiltrado = historico.filter(reg => reg.data !== dataAtual);
 
             const novoRegistro = {
@@ -614,17 +687,124 @@
 
             historicoFiltrado.push(novoRegistro);
             
-            const chave = `historico_${treinoAtual.codigo}`;
+            const chave = HISTORICO_KEY_PREFIX + treinoAtual.codigo;
             localStorage.setItem(chave, JSON.stringify(historicoFiltrado));
+            
+            // 1. Gera o feedback da IA
+            const feedbackIA = gerarFeedbackIA(exerciciosDoTreino);
 
-            document.getElementById('mensagemSalvamento').innerHTML = `✅ Treino de ${dataAtual} salvo com sucesso! Sua progressão foi atualizada.`;
+            // 2. Exibe o feedback na tela
+            document.getElementById('ia-feedback-text').innerHTML = `<strong>[IA] Análise Concluída:</strong> ${feedbackIA}`;
+            document.getElementById('ia-feedback-container').style.display = 'block';
+
+            document.getElementById('mensagemSalvamento').innerHTML = `[ LOG ENVIADO ] Treino de ${new Date(dataAtual).toLocaleDateString('pt-BR')} salvo. Progressão de carga atualizada.`;
             
             filtrarExercicios();
         }
 
+        // --- FUNÇÕES DE MANUTENÇÃO (Demais funções) ---
+        function adicionarExercicioCustomizado() {
+            const nome = document.getElementById('newExName').value.trim();
+            const grupo = document.getElementById('newExGroup').value.trim();
+            const series = document.getElementById('newExSeries').value.trim();
+            const msg = document.getElementById('mensagemAdicao');
+
+            if (!nome || !grupo || !series) {
+                msg.innerHTML = '<span style="color: var(--danger-color); font-weight: bold;">[ ALERTA ] Por favor, preencha todos os campos.</span>';
+                return;
+            }
+
+            const novoExercicio = {
+                nome: nome,
+                grupo: grupo,
+                series_padrao: series
+            };
+
+            if (treinoAtual.exercicios.some(ex => ex.nome.toUpperCase() === nome.toUpperCase())) {
+                msg.innerHTML = '<span style="color: var(--danger-color); font-weight: bold;">[ ALERTA ] Exercício já existe no plano.</span>';
+                return;
+            }
+            
+            treinoAtual.exercicios.push(novoExercicio);
+            salvarPlanoBase();
+
+            document.getElementById('newExName').value = '';
+            document.getElementById('newExGroup').value = '';
+            document.getElementById('newExSeries').value = '';
+
+            msg.innerHTML = '<span style="color: var(--secondary-neon); font-weight: bold;">[ OK ] Item adicionado. Vá para REGISTRO DE TREINO para usar.</span>';
+            
+            carregarFiltros();
+        }
+
+        function removerExercicioDoPlano(nomeExercicio) {
+            if (!confirm(`[ CONFIRMAÇÃO ] Deseja realmente remover "${nomeExercicio}" do seu plano?`)) {
+                return;
+            }
+
+            treinoAtual.exercicios = treinoAtual.exercicios.filter(ex => ex.nome !== nomeExercicio);
+
+            salvarPlanoBase();
+            
+            carregarFiltros();
+            filtrarExercicios();
+            alert(`[ OK ] "${nomeExercicio}" removido com sucesso.`);
+        }
+
+        function salvarPlanoBase() {
+            const localPlanKey = LOCAL_PLAN_KEY_PREFIX + treinoAtual.codigo;
+            localStorage.setItem(localPlanKey, JSON.stringify(treinoAtual));
+        }
+        
+        function carregarListaHistorico() {
+            const historico = getHistorico();
+            const lista = document.getElementById('listaHistorico');
+            lista.innerHTML = '';
+            document.getElementById('historico-detalhe').style.display = 'none';
+
+            if (historico.length === 0) {
+                lista.innerHTML = '<tr><td colspan="2" style="text-align: center; color: var(--danger-color);">[ LOG ] Nenhuma entrada de treino encontrada.</td></tr>';
+                return;
+            }
+
+            historico.reverse().forEach((treino, index) => {
+                const dataFormatada = new Date(treino.data).toLocaleDateString('pt-BR');
+                lista.innerHTML += `
+                    <tr>
+                        <td>${dataFormatada}</td>
+                        <td>
+                            <button class="btn btn-primary table-btn" onclick="exibirDetalheTreino('${treino.data}')">
+                                [ VER DETALHES ]
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        function exibirDetalheTreino(data) {
+            const historico = getHistorico();
+            const treino = historico.find(t => t.data === data);
+            const detalheDiv = document.getElementById('historico-detalhe');
+            let conteudo = '';
+
+            if (treino) {
+                conteudo += `<h4>LOG do Treino em: ${new Date(treino.data).toLocaleDateString('pt-BR')}</h4>`;
+                conteudo += '<ul>';
+
+                treino.exercicios.forEach(ex => {
+                    const seriesTexto = ex.registro.map(s => `${s.reps} rep. @ ${s.carga} kg`).join(' | ');
+                    conteudo += `<li><strong style="color: var(--primary-neon);">${ex.nome}:</strong> ${seriesTexto}</li>`;
+                });
+
+                conteudo += '</ul>';
+                detalheDiv.innerHTML = conteudo;
+                detalheDiv.style.display = 'block';
+            }
+        }
+
         // Inicializa o app ao carregar a página
         window.onload = init;
-
     </script>
 </body>
 </html>
